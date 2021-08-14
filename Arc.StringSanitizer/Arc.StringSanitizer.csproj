@@ -4,6 +4,16 @@
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
     <LangVersion>9</LangVersion>
+    <Authors>Arnab Roy Chowdhury</Authors>
+    <Description>This library is to sanitize and unsanitize string</Description>
+    <Copyright>Copyright (c) 2021 Arnab Roy Chowdhury</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</RepositoryUrl>
+    <PackageTags>string,sanitize,unsanitize</PackageTags>
+    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    <Version>1.0.0</Version>
+    <DocumentationFile>Arc.StringSanitizer.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

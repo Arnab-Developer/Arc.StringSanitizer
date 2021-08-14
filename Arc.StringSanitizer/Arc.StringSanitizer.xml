@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Arc.StringSanitizer</name>
+    </assembly>
+    <members>
+        <member name="T:Arc.StringSanitizer.SanitizerConfig">
+            <summary>
+            Config for string sanitisation.
+            </summary>
+        </member>
+        <member name="P:Arc.StringSanitizer.SanitizerConfig.From">
+            <summary>
+            String to be replaced.
+            </summary>
+        </member>
+        <member name="P:Arc.StringSanitizer.SanitizerConfig.To">
+            <summary>
+            String replaced with.
+            </summary>
+        </member>
+        <member name="M:Arc.StringSanitizer.SanitizerConfig.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new object of SanitizerConfig.
+            </summary>
+            <param name="from">String to be replaced.</param>
+            <param name="to">String replaced with.</param>
+        </member>
+        <member name="T:Arc.StringSanitizer.StringSanitizerExtensions">
+            <summary>
+            Extension methods for string sanitisation.
+            </summary>
+        </member>
+        <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Sanitize(System.String,Arc.StringSanitizer.SanitizerConfig)">
+            <summary>
+            Sanitize a string.
+            </summary>
+            <param name="input">Unsanitized string.</param>
+            <param name="sanitizerConfig">Sanitizer config.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Sanitize(System.String,System.Collections.Generic.IEnumerable{Arc.StringSanitizer.SanitizerConfig})">
+            <summary>
+            Sanitize a string.
+            </summary>
+            <param name="input">Unsanitized string.</param>
+            <param name="sanitizerConfigs">Sanitizer configs.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Unsanitize(System.String,Arc.StringSanitizer.SanitizerConfig)">
+            <summary>
+            Unsanitize a string.
+            </summary>
+            <param name="input">Sanitized string.</param>
+            <param name="sanitizerConfig">Sanitizer config.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Unsanitize(System.String,System.Collections.Generic.IEnumerable{Arc.StringSanitizer.SanitizerConfig})">
+            <summary>
+            Unsanitize a string.
+            </summary>
+            <param name="input">Sanitized string.</param>
+            <param name="sanitizerConfigs">Sanitizer configs.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
