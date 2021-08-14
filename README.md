@@ -31,6 +31,10 @@ List<SanitizerConfig> sanitizerConfigs = new()
 };
 
 string sanitizedString = unsanitizedString.Sanitize(sanitizerConfigs);
+
+Console.WriteLine(sanitizedString);
+
+// Output: sample test with [sc]. some more [html space] char
 ```
 
 To unsanitize a string:
@@ -46,4 +50,8 @@ List<SanitizerConfig> sanitizerConfigs = new()
 };
 
 string unsanitizedString = sanitizedString.Unsanitize(sanitizerConfigs);
+
+Console.WriteLine(unsanitizedString);
+
+// Output: sample test with special char. some more &nbsp; char
 ```
