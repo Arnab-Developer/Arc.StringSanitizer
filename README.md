@@ -1,5 +1,7 @@
 # String sanitizer
 
+[![build](https://github.com/Arnab-Developer/Arc.StringSanitizer/actions/workflows/build.yml/badge.svg)](https://github.com/Arnab-Developer/Arc.StringSanitizer/actions/workflows/build.yml)
+
 This library is to sanitize and unsanitize string. It is created with .NET 5 and Visual Studo 2019.
 
 Suppose you are working on a string and there are some special chars in it
