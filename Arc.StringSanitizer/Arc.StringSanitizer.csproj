@@ -11,14 +11,14 @@
     <PackageProjectUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</RepositoryUrl>
     <PackageTags>string,sanitize,unsanitize</PackageTags>
-    <PackageReleaseNotes>Add readme for NuGet</PackageReleaseNotes>
-    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Separate readme for NuGet</PackageReleaseNotes>
+    <Version>1.0.2</Version>
     <DocumentationFile>Arc.StringSanitizer.xml</DocumentationFile>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReadmeFile>NuGetReadme.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\NuGetReadme.md" Pack="true" PackagePath="\" />
   </ItemGroup>
   
 </Project>
