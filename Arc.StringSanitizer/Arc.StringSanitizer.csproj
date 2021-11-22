@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <LangVersion>9</LangVersion>
     <Authors>Arnab Roy Chowdhury</Authors>
     <Description>This library is to sanitize and unsanitize string</Description>
     <Copyright>Copyright (c) 2021 Arnab Roy Chowdhury</Copyright>
