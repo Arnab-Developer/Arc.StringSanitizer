@@ -9,7 +9,7 @@ on:
     types: [ created ]
 
 env:
-  DOTNET_VERSION: 5.0.300
+  DOTNET_VERSION: 6.0.x
   CONFIGURATION: Release
 
 jobs:
@@ -30,6 +30,9 @@ jobs:
 
     - name: Test
       run: dotnet test --configuration ${{ env.CONFIGURATION }}
+
+    - name: Create nuget package
+      run: dotnet pack --configuration ${{ env.CONFIGURATION }}
 
   github-nuget-push:
     if: ${{ github.event_name == 'push' || github.event_name == 'release' }}
