@@ -9,7 +9,7 @@ on:
     types: [ created ]
 
 env:
-  DOTNET_VERSION: 5.0.300
+  DOTNET_VERSION: 6.0.x
   CONFIGURATION: Release
 
 jobs:
@@ -30,6 +30,9 @@ jobs:
 
     - name: Test
       run: dotnet test --configuration ${{ env.CONFIGURATION }}
+
+    - name: Create nuget package
+      run: dotnet pack --configuration ${{ env.CONFIGURATION }}
 
   github-nuget-push:
     if: ${{ github.event_name == 'push' || github.event_name == 'release' }}
@@ -52,7 +55,7 @@ jobs:
       run: dotnet pack --configuration ${{ env.CONFIGURATION }}
 
     - name: Push nuget package
-      run: dotnet nuget push "Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.1.0.2.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" --skip-duplicate
+      run: dotnet nuget push "Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.1.0.3.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" --skip-duplicate
 
   nuget-org-push:
     if: ${{ github.event_name == 'release' }}
@@ -78,4 +81,4 @@ jobs:
       run: dotnet pack --configuration ${{ env.CONFIGURATION }}
 
     - name: Push nuget package
-      run: dotnet nuget push "Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.1.0.2.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push "Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.1.0.3.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate

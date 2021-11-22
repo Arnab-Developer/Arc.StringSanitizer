@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <LangVersion>9</LangVersion>
     <Authors>Arnab Roy Chowdhury</Authors>
     <Description>This library is to sanitize and unsanitize string</Description>
     <Copyright>Copyright (c) 2021 Arnab Roy Chowdhury</Copyright>
@@ -11,14 +11,28 @@
     <PackageProjectUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</RepositoryUrl>
     <PackageTags>string,sanitize,unsanitize</PackageTags>
-    <PackageReleaseNotes>Separate readme for NuGet</PackageReleaseNotes>
-    <Version>1.0.2</Version>
+    <PackageReleaseNotes>Package health and dotnet 6 upgrade</PackageReleaseNotes>
+    <Version>1.0.3</Version>
     <DocumentationFile>Arc.StringSanitizer.xml</DocumentationFile>
     <PackageReadmeFile>NuGetReadme.md</PackageReadmeFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\NuGetReadme.md" Pack="true" PackagePath="\" />
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
 </Project>

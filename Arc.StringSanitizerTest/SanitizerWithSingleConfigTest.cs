@@ -1,5 +1,4 @@
 using Arc.StringSanitizer;
-using System;
 using Xunit;
 
 namespace Arc.StringSanitizerTest
