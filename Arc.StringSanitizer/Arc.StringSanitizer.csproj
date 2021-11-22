@@ -11,8 +11,8 @@
     <PackageProjectUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</RepositoryUrl>
     <PackageTags>string,sanitize,unsanitize</PackageTags>
-    <PackageReleaseNotes>Package health and dotnet 6 upgrade</PackageReleaseNotes>
-    <Version>1.0.3</Version>
+    <PackageReleaseNotes>Update readme</PackageReleaseNotes>
+    <Version>1.0.4</Version>
     <DocumentationFile>Arc.StringSanitizer.xml</DocumentationFile>
     <PackageReadmeFile>NuGetReadme.md</PackageReadmeFile>
     <IncludeSymbols>true</IncludeSymbols>
