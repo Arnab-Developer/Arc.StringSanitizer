@@ -11,8 +11,8 @@
     <PackageProjectUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</RepositoryUrl>
     <PackageTags>string,sanitize,unsanitize</PackageTags>
-    <PackageReleaseNotes>Update readme</PackageReleaseNotes>
-    <Version>1.0.4</Version>
+    <PackageReleaseNotes>nuget readme update</PackageReleaseNotes>
+    <Version>1.0.5</Version>
     <DocumentationFile>Arc.StringSanitizer.xml</DocumentationFile>
     <PackageReadmeFile>NuGetReadme.md</PackageReadmeFile>
     <IncludeSymbols>true</IncludeSymbols>
