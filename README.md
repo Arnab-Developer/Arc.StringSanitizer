@@ -1,8 +1,6 @@
 # String sanitizer
 
-[![build](https://github.com/Arnab-Developer/Arc.StringSanitizer/actions/workflows/build.yml/badge.svg)](https://github.com/Arnab-Developer/Arc.StringSanitizer/actions/workflows/build.yml)
-
-This library is to sanitize and unsanitize string. It is created with .NET 6 and Visual Studo 2022.
+This library is to sanitize and unsanitize string.
 
 Suppose you are working on a string and there are some special chars in it
 for that you can't work with that string. Then you need to replace those 
@@ -14,7 +12,7 @@ need to be replaced with which simple chars and call the sanitize method. When y
 work with the string will complete then you can revert all the sanitization by
 calling the unsanitize method of this library.
 
-You can get this library from [NuGet](https://www.nuget.org/packages/Arc.StringSanitizer).
+You can get this library from NuGet.
 
 ```
 dotnet add package Arc.StringSanitizer
