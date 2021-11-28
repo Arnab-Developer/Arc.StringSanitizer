@@ -55,7 +55,7 @@ jobs:
       run: dotnet pack --configuration ${{ env.CONFIGURATION }}
 
     - name: Push nuget package
-      run: dotnet nuget push "Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.1.0.5.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" --skip-duplicate
+      run: dotnet nuget push "Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.1.0.6.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" --skip-duplicate
 
   nuget-org-push:
     if: ${{ github.event_name == 'release' }}
@@ -81,4 +81,4 @@ jobs:
       run: dotnet pack --configuration ${{ env.CONFIGURATION }}
 
     - name: Push nuget package
-      run: dotnet nuget push "Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.1.0.5.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push "Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.1.0.6.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
