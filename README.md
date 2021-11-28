@@ -12,7 +12,7 @@ need to be replaced with which simple chars and call the sanitize method. When y
 work with the string will complete then you can revert all the sanitization by
 calling the unsanitize method of this library.
 
-You can get this library from NuGet.
+You can get this library from [NuGet](https://www.nuget.org/packages/Arc.StringSanitizer).
 
 ```
 dotnet add package Arc.StringSanitizer
