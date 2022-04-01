@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <Authors>Arnab Roy Chowdhury</Authors>
     <Description>This library is to sanitize and unsanitize string</Description>
-    <Copyright>Copyright (c) 2021 Arnab Roy Chowdhury</Copyright>
+    <Copyright>Copyright (c) 2022 Arnab Roy Chowdhury</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</RepositoryUrl>
