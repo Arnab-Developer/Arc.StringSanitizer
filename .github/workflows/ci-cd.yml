@@ -59,6 +59,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-test, codeql-analysis]
     name: GitHub nuget push
+    permissions:
+      packages: write
     steps:
     - name: Checkout code
       uses: actions/checkout@v2 
