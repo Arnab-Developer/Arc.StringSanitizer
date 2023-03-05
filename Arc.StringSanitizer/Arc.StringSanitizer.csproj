@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.1;net6.0;net7.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <LangVersion>10</LangVersion>
+    <LangVersion>11</LangVersion>
     <Authors>Arnab Roy Chowdhury</Authors>
     <Description>This library is to sanitize and unsanitize string</Description>
     <Copyright>Copyright (c) 2023 Arnab Roy Chowdhury</Copyright>
@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</RepositoryUrl>
     <PackageTags>string,sanitize,unsanitize</PackageTags>
     <PackageReleaseNotes>https://github.com/Arnab-Developer/Arc.StringSanitizer/releases</PackageReleaseNotes>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
     <DocumentationFile>Arc.StringSanitizer.xml</DocumentationFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeSymbols>true</IncludeSymbols>
