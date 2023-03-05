@@ -6,7 +6,9 @@ Suppose you are working on a string and there are some special chars in it for t
 
 This library helps you to do that. You can create a config with details like which special chars need to be replaced with which simple chars and call the sanitize method. When your work with the string will complete then you can revert all the sanitization by calling the unsanitize method of this library.
 
-You can get this library from [NuGet](https://www.nuget.org/packages/Arc.StringSanitizer).
+You can get this from [NuGet](https://www.nuget.org/packages/Arc.StringSanitizer).
+
+## How to use
 
 To sanitize a string:
 

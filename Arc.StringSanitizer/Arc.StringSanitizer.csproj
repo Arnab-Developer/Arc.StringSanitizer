@@ -15,14 +15,14 @@
     <PackageReleaseNotes>https://github.com/Arnab-Developer/Arc.StringSanitizer/releases</PackageReleaseNotes>
     <Version>1.0.8</Version>
     <DocumentationFile>Arc.StringSanitizer.xml</DocumentationFile>
-    <PackageReadmeFile>NuGetReadme.md</PackageReadmeFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\NuGetReadme.md" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
