@@ -23,8 +23,6 @@
             <summary>
             Creates a new object of SanitizerConfig.
             </summary>
-            <param name="from">String to be replaced.</param>
-            <param name="to">String replaced with.</param>
         </member>
         <member name="T:Arc.StringSanitizer.StringSanitizerExtensions">
             <summary>
@@ -33,35 +31,23 @@
         </member>
         <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Sanitize(System.String,Arc.StringSanitizer.SanitizerConfig)">
             <summary>
-            Sanitize a string.
+            This method takes a sanitizer config and based on that sanitize a string.
             </summary>
-            <param name="input">Unsanitized string.</param>
-            <param name="sanitizerConfig">Sanitizer config.</param>
-            <returns></returns>
         </member>
         <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Sanitize(System.String,System.Collections.Generic.IEnumerable{Arc.StringSanitizer.SanitizerConfig})">
             <summary>
-            Sanitize a string.
+            This method takes multiple sanitizer configs and based on that sanitize a string.
             </summary>
-            <param name="input">Unsanitized string.</param>
-            <param name="sanitizerConfigs">Sanitizer configs.</param>
-            <returns></returns>
         </member>
         <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Unsanitize(System.String,Arc.StringSanitizer.SanitizerConfig)">
             <summary>
-            Unsanitize a string.
+            This method takes a sanitizer config and based on that unsanitize a string.
             </summary>
-            <param name="input">Sanitized string.</param>
-            <param name="sanitizerConfig">Sanitizer config.</param>
-            <returns></returns>
         </member>
         <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Unsanitize(System.String,System.Collections.Generic.IEnumerable{Arc.StringSanitizer.SanitizerConfig})">
             <summary>
-            Unsanitize a string.
+            This method takes multiple sanitizer configs and based on that unsanitize a string.
             </summary>
-            <param name="input">Sanitized string.</param>
-            <param name="sanitizerConfigs">Sanitizer configs.</param>
-            <returns></returns>
         </member>
     </members>
 </doc>

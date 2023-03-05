@@ -18,8 +18,6 @@ public class SanitizerConfig
     /// <summary>
     /// Creates a new object of SanitizerConfig.
     /// </summary>
-    /// <param name="from">String to be replaced.</param>
-    /// <param name="to">String replaced with.</param>
     public SanitizerConfig(string from, string to)
     {
         From = from;
