@@ -109,10 +109,10 @@ public class SanitizerWithMultipleConfigTest
         // Arrange.
         var unsanitizedString = " ";
 
-        var sanitizerConfigs = new List<SanitizerConfig>() 
-        { 
-            new SanitizerConfig("special char", "[sc]"), 
-            new SanitizerConfig("&nbsp;", "[html space]") 
+        var sanitizerConfigs = new List<SanitizerConfig>()
+        {
+            new SanitizerConfig("special char", "[sc]"),
+            new SanitizerConfig("&nbsp;", "[html space]")
         };
 
         // Act.

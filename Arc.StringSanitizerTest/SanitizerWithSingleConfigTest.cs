@@ -103,7 +103,7 @@ public class SanitizerWithSingleConfigTest
         // Act.
         var func = () => unsanitizedString!.Sanitize(config!);
 
-        // Act and Assert.
+        // Assert.
         Assert.Throws<NullReferenceException>(func);
     }
 }

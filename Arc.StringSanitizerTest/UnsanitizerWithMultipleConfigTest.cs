@@ -78,7 +78,7 @@ public class UnsanitizerWithMultipleConfigTest
         // Act.
         var func = () => sanitizedString.Unsanitize(sanitizerConfigs);
 
-        // Arrange.
+        // Assert.
         var ex = Assert.Throws<ArgumentException>(func);
         Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
     }
@@ -118,7 +118,7 @@ public class UnsanitizerWithMultipleConfigTest
         // Act.
         var func = () => sanitizedString.Unsanitize(sanitizerConfigs);
 
-        // Arrange.
+        // Assert.
         var ex = Assert.Throws<ArgumentException>(func);
         Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
     }
@@ -133,7 +133,7 @@ public class UnsanitizerWithMultipleConfigTest
         // Act.
         var func = () => sanitizedString.Unsanitize(sanitizerConfigs!);
 
-        // Arrange.
+        // Assert.
         var ex = Assert.Throws<ArgumentNullException>(func);
         Assert.Equal("Value cannot be null. (Parameter 'sanitizerConfigs')", ex.Message);
     }
