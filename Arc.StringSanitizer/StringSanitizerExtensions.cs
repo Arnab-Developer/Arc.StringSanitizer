@@ -12,10 +12,7 @@ public static class StringSanitizerExtensions
     /// </summary>
     public static string Sanitize(this string input, SanitizerConfig sanitizerConfig)
     {
-        IEnumerable<SanitizerConfig> sanitizerConfigs = new List<SanitizerConfig>()
-            {
-                sanitizerConfig
-            };
+        var sanitizerConfigs = new List<SanitizerConfig>() { sanitizerConfig };
         return input.Sanitize(sanitizerConfigs);
     }
 
@@ -34,11 +31,13 @@ public static class StringSanitizerExtensions
             throw new ArgumentNullException(nameof(sanitizerConfigs));
         }
 
-        StringBuilder sb = new(input);
+        var sb = new StringBuilder(input);
+
         foreach (SanitizerConfig sanitizerConfig in sanitizerConfigs)
         {
             sb.Replace(sanitizerConfig.From, sanitizerConfig.To);
         }
+
         return sb.ToString();
     }
 
@@ -47,10 +46,7 @@ public static class StringSanitizerExtensions
     /// </summary>
     public static string Unsanitize(this string input, SanitizerConfig sanitizerConfig)
     {
-        IEnumerable<SanitizerConfig> sanitizerConfigs = new List<SanitizerConfig>()
-            {
-                sanitizerConfig
-            };
+        var sanitizerConfigs = new List<SanitizerConfig>() { sanitizerConfig };
         return input.Unsanitize(sanitizerConfigs);
     }
 
@@ -69,9 +65,8 @@ public static class StringSanitizerExtensions
             throw new ArgumentNullException(nameof(sanitizerConfigs));
         }
 
-        IEnumerable<SanitizerConfig> reverseSanitizerConfigs
-            = from sanitizerConfig in sanitizerConfigs
-              select new SanitizerConfig(sanitizerConfig.To, sanitizerConfig.From);
+        var reverseSanitizerConfigs = sanitizerConfigs
+            .Select(sanitizerConfig => new SanitizerConfig(sanitizerConfig.To, sanitizerConfig.From));
 
         return input.Sanitize(reverseSanitizerConfigs);
     }
