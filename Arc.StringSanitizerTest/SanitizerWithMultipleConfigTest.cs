@@ -56,9 +56,10 @@ public class SanitizerWithMultipleConfigTest
         };
 
         // Act.
-        var ex = Assert.Throws<ArgumentException>(() => unsanitizedString!.Sanitize(sanitizerConfigs));
+        var func = () => unsanitizedString!.Sanitize(sanitizerConfigs);
 
         // Assert.
+        var ex = Assert.Throws<ArgumentException>(func);
         Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
     }
 
@@ -75,9 +76,10 @@ public class SanitizerWithMultipleConfigTest
         };
 
         // Act.
-        var ex = Assert.Throws<ArgumentException>(() => unsanitizedString.Sanitize(sanitizerConfigs));
+        var func = () => unsanitizedString.Sanitize(sanitizerConfigs);
 
         // Assert.
+        var ex = Assert.Throws<ArgumentException>(func);
         Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
     }
 
@@ -94,9 +96,10 @@ public class SanitizerWithMultipleConfigTest
         };
 
         // Act.
-        var ex = Assert.Throws<ArgumentException>(() => unsanitizedString.Sanitize(sanitizerConfigs));
+        var func = () => unsanitizedString.Sanitize(sanitizerConfigs);
 
         // Assert.
+        var ex = Assert.Throws<ArgumentException>(func);
         Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
     }
 
@@ -113,9 +116,10 @@ public class SanitizerWithMultipleConfigTest
         };
 
         // Act.
-        var ex = Assert.Throws<ArgumentException>(() => unsanitizedString.Sanitize(sanitizerConfigs));
+        var func = () => unsanitizedString.Sanitize(sanitizerConfigs);
 
         // Assert.
+        var ex = Assert.Throws<ArgumentException>(func);
         Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
     }
 
@@ -124,13 +128,13 @@ public class SanitizerWithMultipleConfigTest
     {
         // Arrange.
         var unsanitizedString = "sample test with special char. some more &nbsp; char";
-
         List<SanitizerConfig>? sanitizerConfigs = null;
 
         // Act.
-        var ex = Assert.Throws<ArgumentNullException>(() => unsanitizedString.Sanitize(sanitizerConfigs!));
+        var func = () => unsanitizedString.Sanitize(sanitizerConfigs!);
 
         // Assert.
+        var ex = Assert.Throws<ArgumentNullException>(func);
         Assert.Equal("Value cannot be null. (Parameter 'sanitizerConfigs')", ex.Message);
     }
 }
