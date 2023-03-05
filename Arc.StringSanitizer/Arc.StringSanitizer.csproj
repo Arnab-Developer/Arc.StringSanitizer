@@ -12,7 +12,7 @@
     <PackageProjectUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</RepositoryUrl>
     <PackageTags>string,sanitize,unsanitize</PackageTags>
-    <PackageReleaseNotes>Copyright update</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/Arnab-Developer/Arc.StringSanitizer/releases</PackageReleaseNotes>
     <Version>1.0.8</Version>
     <DocumentationFile>Arc.StringSanitizer.xml</DocumentationFile>
     <PackageReadmeFile>NuGetReadme.md</PackageReadmeFile>
