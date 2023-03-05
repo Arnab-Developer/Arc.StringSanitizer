@@ -8,6 +8,8 @@ This library helps you to do that. You can create a config with details like whi
 
 You can get this library from [NuGet](https://www.nuget.org/packages/Arc.StringSanitizer).
 
+## How to use
+
 To sanitize a string:
 
 ```csharp
