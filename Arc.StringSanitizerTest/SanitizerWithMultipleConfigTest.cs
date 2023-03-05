@@ -8,116 +8,129 @@ public class SanitizerWithMultipleConfigTest
     [Fact]
     public void CanSanitizeWithMultipleConfig()
     {
-        string unsanitizedString =
-            "sample test with special char. some more &nbsp; char";
+        // Arrange.
+        var unsanitizedString = "sample test with special char. some more &nbsp; char";
 
-        List<SanitizerConfig> sanitizerConfigs = new()
+        var sanitizerConfigs = new List<SanitizerConfig>()
         {
             new SanitizerConfig("special char", "[sc]"),
             new SanitizerConfig("&nbsp;", "[html space]")
         };
 
-        string sanitizedString = unsanitizedString.Sanitize(sanitizerConfigs);
+        // Act.
+        var sanitizedString = unsanitizedString.Sanitize(sanitizerConfigs);
 
+        // Assert.
         Assert.Equal("sample test with [sc]. some more [html space] char", sanitizedString);
     }
 
     [Fact]
     public void CanSkipSanitizeWithNotFoundString()
     {
-        string unsanitizedString =
-            "sample test with special char. some more &nbsp char";
+        // Arrange.
+        var unsanitizedString = "sample test with special char. some more &nbsp char";
 
-        List<SanitizerConfig> sanitizerConfigs = new()
+        var sanitizerConfigs = new List<SanitizerConfig>()
         {
             new SanitizerConfig("special char", "[sc]"),
             new SanitizerConfig("&nbsp;", "[html space]")
         };
 
-        string sanitizedString = unsanitizedString.Sanitize(sanitizerConfigs);
+        // Act.
+        var sanitizedString = unsanitizedString.Sanitize(sanitizerConfigs);
 
+        // Assert.
         Assert.Equal("sample test with [sc]. some more &nbsp char", sanitizedString);
     }
 
     [Fact]
     public void CanSanitizeCheckNullInput()
     {
+        // Arrange.
         string? unsanitizedString = null;
 
-        List<SanitizerConfig> sanitizerConfigs = new()
+        var sanitizerConfigs = new List<SanitizerConfig>()
         {
             new SanitizerConfig("special char", "[sc]"),
             new SanitizerConfig("&nbsp;", "[html space]")
         };
 
-        ArgumentException ex = Assert.Throws<ArgumentException>(() =>
-            unsanitizedString!.Sanitize(sanitizerConfigs));
+        // Act.
+        var ex = Assert.Throws<ArgumentException>(() => unsanitizedString!.Sanitize(sanitizerConfigs));
 
+        // Assert.
         Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
     }
 
     [Fact]
     public void CanSanitizeCheckEmptyInput()
     {
-        string unsanitizedString = string.Empty;
+        // Arrange.
+        var unsanitizedString = string.Empty;
 
-        List<SanitizerConfig> sanitizerConfigs = new()
+        var sanitizerConfigs = new List<SanitizerConfig>()
         {
             new SanitizerConfig("special char", "[sc]"),
             new SanitizerConfig("&nbsp;", "[html space]")
         };
 
-        ArgumentException ex = Assert.Throws<ArgumentException>(() =>
-            unsanitizedString.Sanitize(sanitizerConfigs));
+        // Act.
+        var ex = Assert.Throws<ArgumentException>(() => unsanitizedString.Sanitize(sanitizerConfigs));
 
+        // Assert.
         Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
     }
 
     [Fact]
     public void CanSanitizeCheckBlankInput()
     {
-        string unsanitizedString = "";
+        // Arrange.
+        var unsanitizedString = "";
 
-        List<SanitizerConfig> sanitizerConfigs = new()
+        var sanitizerConfigs = new List<SanitizerConfig>()
         {
             new SanitizerConfig("special char", "[sc]"),
             new SanitizerConfig("&nbsp;", "[html space]")
         };
 
-        ArgumentException ex = Assert.Throws<ArgumentException>(() =>
-            unsanitizedString.Sanitize(sanitizerConfigs));
+        // Act.
+        var ex = Assert.Throws<ArgumentException>(() => unsanitizedString.Sanitize(sanitizerConfigs));
 
+        // Assert.
         Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
     }
 
     [Fact]
     public void CanSanitizeCheckWhiteSpaceInput()
     {
-        string unsanitizedString = " ";
+        // Arrange.
+        var unsanitizedString = " ";
 
-        List<SanitizerConfig> sanitizerConfigs = new()
-        {
-            new SanitizerConfig("special char", "[sc]"),
-            new SanitizerConfig("&nbsp;", "[html space]")
+        var sanitizerConfigs = new List<SanitizerConfig>() 
+        { 
+            new SanitizerConfig("special char", "[sc]"), 
+            new SanitizerConfig("&nbsp;", "[html space]") 
         };
 
-        ArgumentException ex = Assert.Throws<ArgumentException>(() =>
-            unsanitizedString.Sanitize(sanitizerConfigs));
+        // Act.
+        var ex = Assert.Throws<ArgumentException>(() => unsanitizedString.Sanitize(sanitizerConfigs));
 
+        // Assert.
         Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
     }
 
     [Fact]
     public void CanSanitizeCheckNullConfig()
     {
-        string unsanitizedString =
-            "sample test with special char. some more &nbsp; char";
+        // Arrange.
+        var unsanitizedString = "sample test with special char. some more &nbsp; char";
 
         List<SanitizerConfig>? sanitizerConfigs = null;
 
-        ArgumentNullException ex = Assert.Throws<ArgumentNullException>(() =>
-            unsanitizedString.Sanitize(sanitizerConfigs!));
+        // Act.
+        var ex = Assert.Throws<ArgumentNullException>(() => unsanitizedString.Sanitize(sanitizerConfigs!));
 
+        // Assert.
         Assert.Equal("Value cannot be null. (Parameter 'sanitizerConfigs')", ex.Message);
     }
 }
