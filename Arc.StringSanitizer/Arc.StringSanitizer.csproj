@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFrameworks>netstandard2.1;net6.0;net7.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <LangVersion>10</LangVersion>
     <Authors>Arnab Roy Chowdhury</Authors>
     <Description>This library is to sanitize and unsanitize string</Description>
-    <Copyright>Copyright (c) 2022 Arnab Roy Chowdhury</Copyright>
+    <Copyright>Copyright (c) 2023 Arnab Roy Chowdhury</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</RepositoryUrl>
