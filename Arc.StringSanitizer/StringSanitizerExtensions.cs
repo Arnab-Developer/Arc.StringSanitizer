@@ -8,11 +8,8 @@ namespace Arc.StringSanitizer;
 public static class StringSanitizerExtensions
 {
     /// <summary>
-    /// Sanitize a string.
+    /// This method takes a sanitizer config and based on that sanitize a string.
     /// </summary>
-    /// <param name="input">Unsanitized string.</param>
-    /// <param name="sanitizerConfig">Sanitizer config.</param>
-    /// <returns></returns>
     public static string Sanitize(this string input, SanitizerConfig sanitizerConfig)
     {
         IEnumerable<SanitizerConfig> sanitizerConfigs = new List<SanitizerConfig>()
@@ -23,11 +20,8 @@ public static class StringSanitizerExtensions
     }
 
     /// <summary>
-    /// Sanitize a string.
+    /// This method takes multiple sanitizer configs and based on that sanitize a string.
     /// </summary>
-    /// <param name="input">Unsanitized string.</param>
-    /// <param name="sanitizerConfigs">Sanitizer configs.</param>
-    /// <returns></returns>
     public static string Sanitize(this string input, IEnumerable<SanitizerConfig> sanitizerConfigs)
     {
         if (string.IsNullOrWhiteSpace(input))
@@ -49,11 +43,8 @@ public static class StringSanitizerExtensions
     }
 
     /// <summary>
-    /// Unsanitize a string.
+    /// This method takes a sanitizer config and based on that unsanitize a string.
     /// </summary>
-    /// <param name="input">Sanitized string.</param>
-    /// <param name="sanitizerConfig">Sanitizer config.</param>
-    /// <returns></returns>
     public static string Unsanitize(this string input, SanitizerConfig sanitizerConfig)
     {
         IEnumerable<SanitizerConfig> sanitizerConfigs = new List<SanitizerConfig>()
@@ -64,11 +55,8 @@ public static class StringSanitizerExtensions
     }
 
     /// <summary>
-    /// Unsanitize a string.
+    /// This method takes multiple sanitizer configs and based on that unsanitize a string.
     /// </summary>
-    /// <param name="input">Sanitized string.</param>
-    /// <param name="sanitizerConfigs">Sanitizer configs.</param>
-    /// <returns></returns>
     public static string Unsanitize(this string input, IEnumerable<SanitizerConfig> sanitizerConfigs)
     {
         if (string.IsNullOrWhiteSpace(input))
