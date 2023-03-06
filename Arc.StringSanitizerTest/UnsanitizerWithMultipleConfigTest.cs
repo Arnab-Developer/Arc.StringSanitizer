@@ -1,6 +1,3 @@
-using Arc.StringSanitizer;
-using Xunit;
-
 namespace Arc.StringSanitizerTest;
 
 public class UnsanitizerWithMultipleConfigTest
