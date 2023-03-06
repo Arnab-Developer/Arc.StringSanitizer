@@ -1,5 +1,5 @@
 // Copyright (c) 2023, Arnab Roy Chowdhury and Contributors.
-// All rights reserved. Licensed under the MIT License; see License.txt.
+// All rights reserved. Licensed under the MIT License; see LICENSE.txt.
 
 using Arc.StringSanitizer;
 using Xunit;
