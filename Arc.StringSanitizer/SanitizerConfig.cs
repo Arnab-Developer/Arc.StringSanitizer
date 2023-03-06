@@ -1,7 +1,4 @@
-﻿// Copyright (c) 2023, Arnab Roy Chowdhury and Contributors.
-// All rights reserved. Licensed under the MIT License; see LICENSE.txt.
-
-namespace Arc.StringSanitizer;
+﻿namespace Arc.StringSanitizer;
 
 /// <summary>
 /// Config for string sanitisation.
