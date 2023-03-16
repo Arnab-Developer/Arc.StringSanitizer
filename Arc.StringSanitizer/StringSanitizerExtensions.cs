@@ -2,23 +2,17 @@
 
 namespace Arc.StringSanitizer;
 
-/// <summary>
-/// Extension methods for string sanitisation.
-/// </summary>
+/// <include file='XmlDocs/StringSanitizerExtensions.xml' path='docs/StringSanitizerExtensions/*'/>
 public static class StringSanitizerExtensions
 {
-    /// <summary>
-    /// This method takes a sanitizer config and based on that sanitize a string.
-    /// </summary>
+    /// <include file='XmlDocs/StringSanitizerExtensions.xml' path='docs/SanitizeSingle/*'/>
     public static string Sanitize(this string input, SanitizerConfig sanitizerConfig)
     {
         var sanitizerConfigs = new List<SanitizerConfig>() { sanitizerConfig };
         return input.Sanitize(sanitizerConfigs);
     }
 
-    /// <summary>
-    /// This method takes multiple sanitizer configs and based on that sanitize a string.
-    /// </summary>
+    /// <include file='XmlDocs/StringSanitizerExtensions.xml' path='docs/SanitizeMany/*'/>
     public static string Sanitize(this string input, IEnumerable<SanitizerConfig> sanitizerConfigs)
     {
         if (string.IsNullOrWhiteSpace(input))
@@ -41,18 +35,14 @@ public static class StringSanitizerExtensions
         return sb.ToString();
     }
 
-    /// <summary>
-    /// This method takes a sanitizer config and based on that unsanitize a string.
-    /// </summary>
+    /// <include file='XmlDocs/StringSanitizerExtensions.xml' path='docs/UnsanitizeSingle/*'/>
     public static string Unsanitize(this string input, SanitizerConfig sanitizerConfig)
     {
         var sanitizerConfigs = new List<SanitizerConfig>() { sanitizerConfig };
         return input.Unsanitize(sanitizerConfigs);
     }
 
-    /// <summary>
-    /// This method takes multiple sanitizer configs and based on that unsanitize a string.
-    /// </summary>
+    /// <include file='XmlDocs/StringSanitizerExtensions.xml' path='docs/UnsanitizeMany/*'/>
     public static string Unsanitize(this string input, IEnumerable<SanitizerConfig> sanitizerConfigs)
     {
         if (string.IsNullOrWhiteSpace(input))

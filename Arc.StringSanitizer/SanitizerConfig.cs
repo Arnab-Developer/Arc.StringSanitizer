@@ -1,23 +1,15 @@
 ﻿namespace Arc.StringSanitizer;
 
-/// <summary>
-/// Config for string sanitisation.
-/// </summary>
+/// <include file='XmlDocs/SanitizerConfig.xml' path='docs/SanitizerConfig/*'/>
 public class SanitizerConfig
 {
-    /// <summary>
-    /// String to be replaced.
-    /// </summary>
+    /// <include file='XmlDocs/SanitizerConfig.xml' path='docs/From/*'/>
     public string From { get; set; }
 
-    /// <summary>
-    /// String replaced with.
-    /// </summary>
+    /// <include file='XmlDocs/SanitizerConfig.xml' path='docs/To/*'/>
     public string To { get; set; }
 
-    /// <summary>
-    /// Creates a new object of SanitizerConfig.
-    /// </summary>
+    /// <include file='XmlDocs/SanitizerConfig.xml' path='docs/Const/*'/>
     public SanitizerConfig(string from, string to)
     {
         From = from;
