@@ -12,7 +12,7 @@ public class SanitizerConfig
     /// <include file='XmlDocs/SanitizerConfig.xml' path='docs/Const/*'/>
     public SanitizerConfig(string from, string to)
     {
-        From = from;
+        From = from
         To = to;
     }
 }
