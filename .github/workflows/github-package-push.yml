@@ -1,0 +1,32 @@
+name: GitHub package push
+
+on:  
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  DOTNET_VERSION: 9.0.x
+  CONFIGURATION: Release
+
+jobs:
+  github-package-push:
+    runs-on: ubuntu-latest
+    name: GitHub package push
+    permissions:
+      packages: write
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 
+      
+    - name: Create package
+      uses: ./.github/actions/create-package
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: Push nuget package
+      run: |
+        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
+          --api-key ${{ secrets.GITHUB_TOKEN }} \
+          --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
+          --skip-duplicate
