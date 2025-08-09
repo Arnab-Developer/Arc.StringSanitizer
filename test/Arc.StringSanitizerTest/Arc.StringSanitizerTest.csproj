@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Arc.StringSanitizer\Arc.StringSanitizer.csproj" />
+    <ProjectReference Include="..\..\src\Arc.StringSanitizer\Arc.StringSanitizer.csproj" />
   </ItemGroup>
 
 </Project>
