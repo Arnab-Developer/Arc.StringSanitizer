@@ -100,7 +100,7 @@ jobs:
       run: dotnet build --configuration ${{ env.CONFIGURATION }}
 
     - name: Create nuget package
-      run: dotnet pack --configuration ${{ env.CONFIGURATION }}
+      run: dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" --configuration ${{ env.CONFIGURATION }}
 
     - name: Push nuget package
       run: dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.2.0.1.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
