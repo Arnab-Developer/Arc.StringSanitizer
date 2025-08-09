@@ -29,7 +29,7 @@ public partial class StringSanitizerExtensionsTest
     }
 
     [Fact]
-    public void SanitizeSingle_ThrowException_WhenInputIsNull()
+    public void SanitizeSingle_ThrowException_WhenStringIsNull()
     {
         // Arrange
         string? unsanitizedString = null;
@@ -45,7 +45,7 @@ public partial class StringSanitizerExtensionsTest
     }
 
     [Fact]
-    public void SanitizeSingle_ThrowException_WhenInputIsEmpty()
+    public void SanitizeSingle_ThrowException_WhenStringIsEmpty()
     {
         // Arrange
         var unsanitizedString = "";
@@ -59,7 +59,7 @@ public partial class StringSanitizerExtensionsTest
     }
 
     [Fact]
-    public void SanitizeSingle_ThrowException_WhenInputIsBlankSpace()
+    public void SanitizeSingle_ThrowException_WhenStringIsBlankSpace()
     {
         // Arrange
         var unsanitizedString = " ";
