@@ -14,22 +14,36 @@
             <summary>String replaced with.</summary>
         </member>
         <member name="M:Arc.StringSanitizer.SanitizerConfig.#ctor(System.String,System.String)">
-            <summary>Creates a new object of SanitizerConfig.</summary><param name="from">String to be replaced.</param><param name="to">String replaced with.</param>
+            <summary>Creates a new object of SanitizerConfig.</summary>
+            <param name="from">String to be replaced.</param>
+            <param name="to">String replaced with.</param>
         </member>
         <member name="T:Arc.StringSanitizer.StringSanitizerExtensions">
             <summary>Extension methods for string sanitisation.</summary>
         </member>
         <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Sanitize(System.String,Arc.StringSanitizer.SanitizerConfig)">
-            <summary>This method takes a sanitizer config and based on that sanitize a string.</summary><param name="input">Unsanitized string.</param><param name="sanitizerConfig">Sanitizer configuration.</param><returns>Sanitized string.</returns>
+            <summary>This method takes a sanitizer config and based on that sanitize a string.</summary>
+            <param name="input">Unsanitized string.</param>
+            <param name="sanitizerConfig">Sanitizer configuration.</param>
+            <returns>Sanitized string.</returns>
         </member>
         <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Sanitize(System.String,System.Collections.Generic.IEnumerable{Arc.StringSanitizer.SanitizerConfig})">
-            <summary>This method takes multiple sanitizer configs and based on that sanitize a string.</summary><param name="input">Unsanitized string.</param><param name="sanitizerConfigs">Multiple sanitizer configurations.</param><returns>Sanitized string.</returns>
+            <summary>This method takes multiple sanitizer configs and based on that sanitize a string.</summary>
+            <param name="input">Unsanitized string.</param>
+            <param name="sanitizerConfigs">Multiple sanitizer configurations.</param>
+            <returns>Sanitized string.</returns>
         </member>
         <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Unsanitize(System.String,Arc.StringSanitizer.SanitizerConfig)">
-            <summary>This method takes a sanitizer config and based on that unsanitize a string.</summary><param name="input">Sanitized string.</param><param name="sanitizerConfig">Sanitizer configuration.</param><returns>Unsanitized string.</returns>
+            <summary>This method takes a sanitizer config and based on that unsanitize a string.</summary>
+            <param name="input">Sanitized string.</param>
+            <param name="sanitizerConfig">Sanitizer configuration.</param>
+            <returns>Unsanitized string.</returns>
         </member>
         <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Unsanitize(System.String,System.Collections.Generic.IEnumerable{Arc.StringSanitizer.SanitizerConfig})">
-            <summary>This method takes multiple sanitizer configs and based on that unsanitize a string.</summary><param name="input">Sanitized string.</param><param name="sanitizerConfigs">Multiple sanitizer configurations.</param><returns>Unsanitized string.</returns>
+            <summary>This method takes multiple sanitizer configs and based on that unsanitize a string.</summary>
+            <param name="input">Sanitized string.</param>
+            <param name="sanitizerConfigs">Multiple sanitizer configurations.</param>
+            <returns>Unsanitized string.</returns>
         </member>
     </members>
 </doc>
