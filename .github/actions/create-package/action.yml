@@ -1,0 +1,40 @@
+name: Create package
+description: Create NuGet package
+
+inputs:
+  dotnet-version:
+    description: .NET version
+    required: true
+
+  configuration:
+    description: Build configuration
+    required: false
+    default: Release
+
+runs:
+  using: "composite"
+  steps:    
+  - name: Setup .NET
+    uses: actions/setup-dotnet@v4
+    with:
+      dotnet-version: ${{ inputs.dotnet-version }}
+      
+  - name: Restore
+    shell: bash
+    run: dotnet restore --locked-mode
+
+  - name: Build
+    shell: bash
+    run: dotnet build -c ${{ inputs.configuration }} --no-restore
+
+  - name: Test
+    shell: bash
+    run: dotnet test -c ${{ inputs.configuration }} --no-build
+
+  - name: Create nuget package
+    shell: bash
+    run: |
+      dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" \
+        -c ${{ inputs.configuration }} \
+        --no-restore \
+        --no-build

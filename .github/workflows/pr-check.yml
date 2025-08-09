@@ -1,0 +1,47 @@
+name: PR check
+
+on:  
+  pull_request:
+    branches: [ main ]
+
+env:
+  DOTNET_VERSION: 9.0.x
+  CONFIGURATION: Release
+
+jobs:
+  create-package:    
+    runs-on: ubuntu-latest   
+    name: Create package
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 
+      
+    - name: Create package
+      uses: ./.github/actions/create-package
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+  codeql-analysis:    
+    name: CodeQL analysis
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: csharp
+        
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+        
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
