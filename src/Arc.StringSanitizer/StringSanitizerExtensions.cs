@@ -2,17 +2,23 @@
 
 namespace Arc.StringSanitizer;
 
-/// <include file='XmlDocs/StringSanitizerExtensions.xml' path='docs/StringSanitizerExtensions/*'/>
+/// <summary>Extension methods for string sanitisation.</summary>
 public static class StringSanitizerExtensions
 {
-    /// <include file='XmlDocs/StringSanitizerExtensions.xml' path='docs/SanitizeSingle/*'/>
+    /// <summary>This method takes a sanitizer config and based on that sanitize a string.</summary>
+    /// <param name="input">Unsanitized string.</param>
+    /// <param name="sanitizerConfig">Sanitizer configuration.</param>
+    /// <returns>Sanitized string.</returns>
     public static string Sanitize(this string input, SanitizerConfig sanitizerConfig)
     {
         var sanitizerConfigs = new List<SanitizerConfig>() { sanitizerConfig };
         return input.Sanitize(sanitizerConfigs);
     }
 
-    /// <include file='XmlDocs/StringSanitizerExtensions.xml' path='docs/SanitizeMany/*'/>
+    /// <summary>This method takes multiple sanitizer configs and based on that sanitize a string.</summary>
+    /// <param name="input">Unsanitized string.</param>
+    /// <param name="sanitizerConfigs">Multiple sanitizer configurations.</param>
+    /// <returns>Sanitized string.</returns>
     public static string Sanitize(this string input, IEnumerable<SanitizerConfig> sanitizerConfigs)
     {
         if (string.IsNullOrWhiteSpace(input))
@@ -35,14 +41,20 @@ public static class StringSanitizerExtensions
         return sb.ToString();
     }
 
-    /// <include file='XmlDocs/StringSanitizerExtensions.xml' path='docs/UnsanitizeSingle/*'/>
+    /// <summary>This method takes a sanitizer config and based on that unsanitize a string.</summary>
+    /// <param name="input">Sanitized string.</param>
+    /// <param name="sanitizerConfig">Sanitizer configuration.</param>
+    /// <returns>Unsanitized string.</returns>
     public static string Unsanitize(this string input, SanitizerConfig sanitizerConfig)
     {
         var sanitizerConfigs = new List<SanitizerConfig>() { sanitizerConfig };
         return input.Unsanitize(sanitizerConfigs);
     }
 
-    /// <include file='XmlDocs/StringSanitizerExtensions.xml' path='docs/UnsanitizeMany/*'/>
+    /// <summary>This method takes multiple sanitizer configs and based on that unsanitize a string.</summary>
+    /// <param name="input">Sanitized string.</param>
+    /// <param name="sanitizerConfigs">Multiple sanitizer configurations.</param>
+    /// <returns>Unsanitized string.</returns>
     public static string Unsanitize(this string input, IEnumerable<SanitizerConfig> sanitizerConfigs)
     {
         if (string.IsNullOrWhiteSpace(input))
