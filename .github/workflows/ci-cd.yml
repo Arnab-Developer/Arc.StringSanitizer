@@ -9,7 +9,7 @@ on:
     types: [ published ]
 
 env:
-  DOTNET_VERSION: 7.0.x
+  DOTNET_VERSION: 9.0.x
   CONFIGURATION: Release
 
 jobs:
@@ -43,6 +43,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
