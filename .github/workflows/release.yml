@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  release:
+    types: [ published ]
+  workflow_dispatch:
+
+env:
+  DOTNET_VERSION: 9.0.x
+
+jobs:
+  nuget-org-push:
+    runs-on: ubuntu-latest
+    name: NuGet org push
+    environment:
+      name: "NuGetEnv"
+      url: "https://www.nuget.org/packages/Arc.StringSanitizer"
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4      
+
+    - name: Create package
+      uses: ./.github/actions/create-package
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
+    - name: Push nuget package
+      run: |
+        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
+          --api-key ${{ secrets.NUGET_API_KEY }} \
+          --source https://api.nuget.org/v3/index.json \
+          --skip-duplicate
