@@ -9,6 +9,8 @@ public static class StringSanitizerExtensions
     /// <param name="input">Unsanitized string.</param>
     /// <param name="sanitizerConfig">Sanitizer configuration.</param>
     /// <returns>Sanitized string.</returns>
+    /// <exception cref="ArgumentException">It throws ArgumentException when input string is null or empty.</exception>
+    /// <exception cref="ArgumentNullException">It throws ArgumentNullException when input config is null.</exception>
     public static string Sanitize(this string input, SanitizerConfig sanitizerConfig)
     {
         var sanitizerConfigs = new List<SanitizerConfig>() { sanitizerConfig };
@@ -19,6 +21,8 @@ public static class StringSanitizerExtensions
     /// <param name="input">Unsanitized string.</param>
     /// <param name="sanitizerConfigs">Multiple sanitizer configurations.</param>
     /// <returns>Sanitized string.</returns>
+    /// <exception cref="ArgumentException">It throws ArgumentException when input string is null or empty.</exception>
+    /// <exception cref="ArgumentNullException">It throws ArgumentNullException when input config is null.</exception>
     public static string Sanitize(this string input, IEnumerable<SanitizerConfig> sanitizerConfigs)
     {
         if (string.IsNullOrWhiteSpace(input))
@@ -45,6 +49,8 @@ public static class StringSanitizerExtensions
     /// <param name="input">Sanitized string.</param>
     /// <param name="sanitizerConfig">Sanitizer configuration.</param>
     /// <returns>Unsanitized string.</returns>
+    /// <exception cref="ArgumentException">It throws ArgumentException when input string is null or empty.</exception>
+    /// <exception cref="ArgumentNullException">It throws ArgumentNullException when input config is null.</exception>
     public static string Unsanitize(this string input, SanitizerConfig sanitizerConfig)
     {
         var sanitizerConfigs = new List<SanitizerConfig>() { sanitizerConfig };
@@ -55,6 +61,8 @@ public static class StringSanitizerExtensions
     /// <param name="input">Sanitized string.</param>
     /// <param name="sanitizerConfigs">Multiple sanitizer configurations.</param>
     /// <returns>Unsanitized string.</returns>
+    /// <exception cref="ArgumentException">It throws ArgumentException when input string is null or empty.</exception>
+    /// <exception cref="ArgumentNullException">It throws ArgumentNullException when input config is null.</exception>
     public static string Unsanitize(this string input, IEnumerable<SanitizerConfig> sanitizerConfigs)
     {
         if (string.IsNullOrWhiteSpace(input))
