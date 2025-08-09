@@ -12,7 +12,7 @@ public partial class StringSanitizerExtensionsTest
         var sanitizedString = unsanitizedString.Sanitize(_sanitizerConfig);
 
         // Assert.
-        Assert.Equal("sample test with [sc]. some more &nbsp; char", sanitizedString);
+        sanitizedString.ShouldBe("sample test with [sc]. some more &nbsp; char");
     }
 
     [Fact]
@@ -25,7 +25,7 @@ public partial class StringSanitizerExtensionsTest
         var sanitizedString = unsanitizedString.Sanitize(_sanitizerConfig);
 
         // Assert.
-        Assert.Equal("sample test with special 1char. some more &nbsp; char", sanitizedString);
+        sanitizedString.ShouldBe("sample test with special 1char. some more &nbsp; char");
     }
 
     [Fact]
@@ -36,12 +36,12 @@ public partial class StringSanitizerExtensionsTest
 
         // Act.
 #pragma warning disable CS8604 // Possible null reference argument.
-        string func() => unsanitizedString.Sanitize(_sanitizerConfig);
+        var func = () => unsanitizedString.Sanitize(_sanitizerConfig);
 #pragma warning restore CS8604 // Possible null reference argument.
 
         // Assert.
-        var ex = Assert.Throws<ArgumentException>(func);
-        Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
+        var ex = func.ShouldThrow<ArgumentException>();
+        ex.Message.ShouldBe("'input' cannot be null or empty. (Parameter 'input')");
     }
 
     [Fact]
@@ -51,11 +51,11 @@ public partial class StringSanitizerExtensionsTest
         var unsanitizedString = "";
 
         // Act.
-        string func() => unsanitizedString.Sanitize(_sanitizerConfig);
+        var func = () => unsanitizedString.Sanitize(_sanitizerConfig);
 
         // Assert.
-        var ex = Assert.Throws<ArgumentException>(func);
-        Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
+        var ex = func.ShouldThrow<ArgumentException>();
+        ex.Message.ShouldBe("'input' cannot be null or empty. (Parameter 'input')");
     }
 
     [Fact]
@@ -65,11 +65,11 @@ public partial class StringSanitizerExtensionsTest
         var unsanitizedString = " ";
 
         // Act.
-        string func() => unsanitizedString.Sanitize(_sanitizerConfig);
+        var func = () => unsanitizedString.Sanitize(_sanitizerConfig);
 
         // Assert.
-        var ex = Assert.Throws<ArgumentException>(func);
-        Assert.Equal("'input' cannot be null or empty. (Parameter 'input')", ex.Message);
+        var ex = func.ShouldThrow<ArgumentException>();
+        ex.Message.ShouldBe("'input' cannot be null or empty. (Parameter 'input')");
     }
 
     [Fact]
@@ -81,10 +81,10 @@ public partial class StringSanitizerExtensionsTest
 
         // Act.
 #pragma warning disable CS8604 // Possible null reference argument.
-        string func() => unsanitizedString.Sanitize(sanitizerConfig);
+        var func = () => unsanitizedString.Sanitize(sanitizerConfig);
 #pragma warning restore CS8604 // Possible null reference argument.
 
         // Assert.
-        Assert.Throws<NullReferenceException>(func);
+        func.ShouldThrow<NullReferenceException>();
     }
 }
