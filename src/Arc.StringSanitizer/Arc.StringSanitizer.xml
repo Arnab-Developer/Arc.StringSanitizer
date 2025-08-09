@@ -26,24 +26,32 @@
             <param name="input">Unsanitized string.</param>
             <param name="sanitizerConfig">Sanitizer configuration.</param>
             <returns>Sanitized string.</returns>
+            <exception cref="T:System.ArgumentException">It throws ArgumentException when input string is null or empty.</exception>
+            <exception cref="T:System.ArgumentNullException">It throws ArgumentNullException when input config is null.</exception>
         </member>
         <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Sanitize(System.String,System.Collections.Generic.IEnumerable{Arc.StringSanitizer.SanitizerConfig})">
             <summary>This method takes multiple sanitizer configs and based on that sanitize a string.</summary>
             <param name="input">Unsanitized string.</param>
             <param name="sanitizerConfigs">Multiple sanitizer configurations.</param>
             <returns>Sanitized string.</returns>
+            <exception cref="T:System.ArgumentException">It throws ArgumentException when input string is null or empty.</exception>
+            <exception cref="T:System.ArgumentNullException">It throws ArgumentNullException when input config is null.</exception>
         </member>
         <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Unsanitize(System.String,Arc.StringSanitizer.SanitizerConfig)">
             <summary>This method takes a sanitizer config and based on that unsanitize a string.</summary>
             <param name="input">Sanitized string.</param>
             <param name="sanitizerConfig">Sanitizer configuration.</param>
             <returns>Unsanitized string.</returns>
+            <exception cref="T:System.ArgumentException">It throws ArgumentException when input string is null or empty.</exception>
+            <exception cref="T:System.ArgumentNullException">It throws ArgumentNullException when input config is null.</exception>
         </member>
         <member name="M:Arc.StringSanitizer.StringSanitizerExtensions.Unsanitize(System.String,System.Collections.Generic.IEnumerable{Arc.StringSanitizer.SanitizerConfig})">
             <summary>This method takes multiple sanitizer configs and based on that unsanitize a string.</summary>
             <param name="input">Sanitized string.</param>
             <param name="sanitizerConfigs">Multiple sanitizer configurations.</param>
             <returns>Unsanitized string.</returns>
+            <exception cref="T:System.ArgumentException">It throws ArgumentException when input string is null or empty.</exception>
+            <exception cref="T:System.ArgumentNullException">It throws ArgumentNullException when input config is null.</exception>
         </member>
     </members>
 </doc>
