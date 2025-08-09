@@ -14,7 +14,7 @@ public class SanitizerConfig
     /// <param name="to">String replaced with.</param>
     public SanitizerConfig(string from, string to)
     {
-        From = from;
+        From = from;//test
         To = to;
     }
 }
