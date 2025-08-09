@@ -73,7 +73,7 @@ public partial class StringSanitizerExtensionsTest
     }
 
     [Fact]
-    public void SanitizeMultiple_ThrowException_WhenConfigsIsNull()
+    public void SanitizeMultiple_ThrowException_WhenConfigsAreNull()
     {
         // Arrange
         var unsanitizedString = "sample test with special char. some more &nbsp; char";
@@ -87,5 +87,19 @@ public partial class StringSanitizerExtensionsTest
         // Assert.
         var ex = Assert.Throws<ArgumentNullException>(func);
         Assert.Equal("Value cannot be null. (Parameter 'sanitizerConfigs')", ex.Message);
+    }
+
+    [Fact]
+    public void SanitizeMultiple_DoNotSanitize_WhenConfigsAreEmpty()
+    {
+        // Arrange
+        var unsanitizedString = "sample test with special char. some more &nbsp; char";
+        _sanitizerConfigs.Clear();
+
+        // Act.
+        var sanitizedString = unsanitizedString.Sanitize(_sanitizerConfigs);
+
+        // Assert.
+        Assert.Equal("sample test with special char. some more &nbsp; char", sanitizedString);
     }
 }

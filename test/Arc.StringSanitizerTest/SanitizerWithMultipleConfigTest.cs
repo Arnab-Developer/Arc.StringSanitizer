@@ -132,6 +132,6 @@ public class SanitizerWithMultipleConfigTest
 
         // Assert.
         var ex = Assert.Throws<ArgumentNullException>(func);
-        Assert.Equal("Value cannot be null. (Parameter 'sanitizerConfigs')", ex.Message);
+        Assert.Equal("sample test with special char. some more &nbsp; char", ex.Message);
     }
 }
