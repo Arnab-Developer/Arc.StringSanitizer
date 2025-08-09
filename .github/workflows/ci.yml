@@ -61,7 +61,7 @@ jobs:
 
   github-package-push:
     if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
-    needs: [create-package, codeql-analysis, dependency-review]
+    needs: [create-package, codeql-analysis]
     runs-on: ubuntu-latest
     name: GitHub package push
     permissions:
