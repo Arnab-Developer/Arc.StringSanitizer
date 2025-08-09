@@ -30,18 +30,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+      - name: Create package
+        uses: ./.github/actions/codeql-analysis
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
-        with:
-          languages: csharp
-        
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
-        
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3

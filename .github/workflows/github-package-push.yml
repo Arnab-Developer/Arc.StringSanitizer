@@ -7,10 +7,24 @@ on:
 
 env:
   DOTNET_VERSION: 9.0.x
-  CONFIGURATION: Release
 
 jobs:
+  codeql-analysis:    
+    name: CodeQL analysis
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Create package
+        uses: ./.github/actions/codeql-analysis
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
   github-package-push:
+    needs: codeql-analysis
     runs-on: ubuntu-latest
     name: GitHub package push
     permissions:
