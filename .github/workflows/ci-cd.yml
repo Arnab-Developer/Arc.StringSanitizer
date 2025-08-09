@@ -18,10 +18,10 @@ jobs:
     name: Build and test
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3 
+      uses: actions/checkout@v4 
       
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }} 
         
@@ -41,18 +41,18 @@ jobs:
       security-events: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
         with:
           languages: csharp
         
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v2
+        uses: github/codeql-action/autobuild@v3
         
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+        uses: github/codeql-action/analyze@v3
 
   github-nuget-push:
     if: ${{ github.event_name == 'push' || github.event_name == 'release' }}
@@ -63,10 +63,10 @@ jobs:
       packages: write
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3 
+      uses: actions/checkout@v4 
       
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}    
         
@@ -89,10 +89,10 @@ jobs:
       url: "https://www.nuget.org/packages/Arc.StringSanitizer"
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3      
+      uses: actions/checkout@v4      
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }} 
         
