@@ -1,7 +1,9 @@
-name: GitHub package push
+name: Build
 
-on:  
+on:
   push:
+    branches: [ main ]
+  pull_request:
     branches: [ main ]
   workflow_dispatch:
 
@@ -9,6 +11,18 @@ env:
   DOTNET_VERSION: 9.0.x
 
 jobs:
+  create-package:    
+    runs-on: ubuntu-latest   
+    name: Create package
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 
+      
+    - name: Create package
+      uses: ./.github/actions/create-package
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+
   codeql-analysis:    
     name: CodeQL analysis
     runs-on: ubuntu-latest
@@ -18,13 +32,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         
-      - name: Create package
-        uses: ./.github/actions/codeql-analysis
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: csharp
+        
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+        
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
   github-package-push:
-    needs: codeql-analysis
+    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+    needs: [create-package, codeql-analysis]
     runs-on: ubuntu-latest
     name: GitHub package push
     permissions:
