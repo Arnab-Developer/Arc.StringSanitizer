@@ -16,7 +16,7 @@ jobs:
     name: Create package
     steps:
     - name: Checkout code
-      uses: actions/checkout@v1 
+      uses: actions/checkout@v4 
       
     - name: Create package
       uses: ./.github/actions/create-package
