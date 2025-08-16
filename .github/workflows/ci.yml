@@ -3,8 +3,8 @@ name: CI
 on:
   push:
     branches: [ main ]
-  #pull_request:
-    #branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 env:
@@ -42,11 +42,11 @@ jobs:
         with:
           languages: csharp
         
-      #- name: Autobuild
-      #  uses: github/codeql-action/autobuild@v3
-      #  
-      #- name: Perform CodeQL Analysis
-      #  uses: github/codeql-action/analyze@v3
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+        
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
 
   dependency-review:
     if: ${{ github.event_name == 'pull_request' }}
@@ -61,7 +61,7 @@ jobs:
 
   github-package-push:
     if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
-    #needs: [create-package, codeql-analysis]
+    needs: [create-package, codeql-analysis]
     runs-on: ubuntu-latest
     name: GitHub package push
     permissions:
@@ -70,10 +70,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4 
       
-    #- name: Create package
-    #  uses: ./.github/actions/create-package
-    #  with:
-    #    dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: Create package
+      uses: ./.github/actions/create-package
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Get nuget package version id
       id: get-nuget-package-version-id
@@ -92,9 +92,9 @@ jobs:
         package-type: 'nuget'
         package-version-ids: '${{ steps.get-nuget-package-version-id.outputs.VERSION_ID }}'
 
-    #- name: Push nuget package
-    #  run: |
-    #    dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
-    #      --api-key ${{ secrets.GITHUB_TOKEN }} \
-    #      --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
-    #      --skip-duplicate
+    - name: Push nuget package
+      run: |
+        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
+          --api-key ${{ secrets.GITHUB_TOKEN }} \
+          --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
+          --skip-duplicate
