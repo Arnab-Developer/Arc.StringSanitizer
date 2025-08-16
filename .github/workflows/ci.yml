@@ -93,6 +93,7 @@ jobs:
         Write-Output "versionId=$($version.Id)" >> $GITHUB_OUTPUT
 
     - name: Delete nuget package
+      if: ${{ steps.get-nuget-package-version-id.outputs.versionId != '' }}
       uses: actions/delete-package-versions@v5
       with:
         package-name: 'Arc.StringSanitizer'
