@@ -89,7 +89,7 @@ jobs:
           | ConvertFrom-Json `
           | Where-Object { $_.Name -eq "3.0.0" }
 
-        Write-Output "versionId=$($versionId)" >> $GITHUB_OUTPUT
+        Write-Output "versionId=$($version.Id)" >> $GITHUB_OUTPUT
 
     - name: Delete nuget package
       uses: actions/delete-package-versions@v5
