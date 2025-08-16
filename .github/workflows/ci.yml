@@ -91,7 +91,7 @@ jobs:
 
         $v = [System.IO.File]::ReadAllText("$HOME/versions.json")
 
-        Write-Output v
+        Write-Output $v
         Write-Output "versionId=$($version.Id)" >> $GITHUB_OUTPUT
 
     - name: Delete nuget package
