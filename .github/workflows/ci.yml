@@ -89,8 +89,9 @@ jobs:
           | ConvertFrom-Json `
           | Where-Object { $_.name -eq "3.0.0" }
 
-        write-output $version.Id
-        $version.Id >> $GITHUB_OUTPUT
+        $versionId = $version -ne $null ? $version.Id : ''
+        write-output $versionId
+        #$versionId >> $GITHUB_OUTPUT
 
     - name: Delete nuget package
       if: ${{ steps.get-nuget-package-version-id.outputs.versionId != '' }}
