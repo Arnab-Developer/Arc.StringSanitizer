@@ -3,65 +3,65 @@ name: CI
 on:
   push:
     branches: [ main ]
-  # pull_request:
-  #   branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
 
 env:
   DOTNET_VERSION: 9.0.x
 
 jobs:
-  # create-package:    
-  #   runs-on: ubuntu-latest   
-  #   name: Create package
-  #   steps:
-  #   - name: Checkout code
-  #     uses: actions/checkout@v4 
+  create-package:    
+    runs-on: ubuntu-latest   
+    name: Create package
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 
       
-  #   - name: Create package
-  #     uses: ./.github/actions/create-package
-  #     with:
-  #       dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: Create package
+      uses: ./.github/actions/create-package
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
 
-  # codeql-analysis:    
-  #   name: CodeQL analysis
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     security-events: write
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v4
+  codeql-analysis:    
+    name: CodeQL analysis
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
         
-  #     - name: Setup .NET
-  #       uses: actions/setup-dotnet@v4
-  #       with:
-  #         dotnet-version: ${{ env.DOTNET_VERSION }}
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
-  #     - name: Initialize CodeQL
-  #       uses: github/codeql-action/init@v3
-  #       with:
-  #         languages: csharp
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: csharp
         
-  #     - name: Autobuild
-  #       uses: github/codeql-action/autobuild@v3
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
         
-  #     - name: Perform CodeQL Analysis
-  #       uses: github/codeql-action/analyze@v3
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
 
-  # dependency-review:
-  #   if: ${{ github.event_name == 'pull_request' }}
-  #   name: Dependency review
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v4
+  dependency-review:
+    if: ${{ github.event_name == 'pull_request' }}
+    name: Dependency review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-  #     - name: Dependency review
-  #       uses: actions/dependency-review-action@v4
+      - name: Dependency review
+        uses: actions/dependency-review-action@v4
 
   github-package-push:
     if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
-    #needs: [create-package, codeql-analysis]
+    needs: [create-package, codeql-analysis]
     runs-on: ubuntu-latest
     name: GitHub package push
     permissions:
@@ -87,7 +87,7 @@ jobs:
           
         $version = [System.IO.File]::ReadAllText("$HOME/versions.json") `
           | ConvertFrom-Json `
-          | Where-Object { $_.name -eq "3.0.1" }
+          | Where-Object { $_.name -eq "3.0.0" }
 
         $versionId = $version -ne $null ? $version.Id : ''
         "version-id=$versionId" >> $env:GITHUB_OUTPUT
@@ -102,7 +102,7 @@ jobs:
 
     - name: Push nuget package
       run: |
-        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.1.nupkg" \
+        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
           --api-key ${{ secrets.GITHUB_TOKEN }} \
           --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
           --skip-duplicate
