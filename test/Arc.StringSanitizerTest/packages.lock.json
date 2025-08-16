@@ -59,6 +59,11 @@
         "resolved": "4.4.0",
         "contentHash": "gwJEfIGS7FhykvtZoscwXj/XwW+mJY6UbAZk+qtLKFUGWC95kfKXnj8VkxsZQnWBxJemM/q664rGLN5nf+OHZw=="
       },
+      "Microsoft.Bcl.AsyncInterfaces": {
+        "type": "Transitive",
+        "resolved": "8.0.0",
+        "contentHash": "3WA9q9yVqJp222P3x1wYIGDAkpjAku0TMUaaQV22g6L67AI0LdOIrVS7Ht2vJfLHGSPVuqN94vIr15qn+HEkHw=="
+      },
       "Microsoft.CodeCoverage": {
         "type": "Transitive",
         "resolved": "17.14.1",
@@ -121,6 +126,15 @@
         "resolved": "13.0.3",
         "contentHash": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ=="
       },
+      "System.ClientModel": {
+        "type": "Transitive",
+        "resolved": "1.6.0",
+        "contentHash": "cG2Nvpipe/d2Zkll9lknO/A6slINLYR36I49Uysd76NnGf7DKWnLNBLcaqSBxxfUXwk6fw1ncQ8n4RIjG88bMg==",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
+          "System.Memory.Data": "8.0.1"
+        }
+      },
       "System.CodeDom": {
         "type": "Transitive",
         "resolved": "6.0.0",
@@ -138,6 +152,11 @@
         "dependencies": {
           "System.CodeDom": "6.0.0"
         }
+      },
+      "System.Memory.Data": {
+        "type": "Transitive",
+        "resolved": "8.0.1",
+        "contentHash": "BVYuec3jV23EMRDeR7Dr1/qhx7369dZzJ9IWy2xylvb4YfXsrUxspWc4UWYid/tj4zZK58uGZqn2WQiaDMhmAg=="
       },
       "System.Reflection.Metadata": {
         "type": "Transitive",
@@ -190,7 +209,19 @@
       "arc.stringsanitizer": {
         "type": "Project",
         "dependencies": {
+          "Azure.Core": "[1.47.2, )",
           "Microsoft.Extensions.Logging": "[9.0.8, )"
+        }
+      },
+      "Azure.Core": {
+        "type": "CentralTransitive",
+        "requested": "[1.47.2, )",
+        "resolved": "1.47.2",
+        "contentHash": "tx92zweTYaNGQzw5eZMAP3AledOIOH2nBF6+1ep27/nY7Tp6T5s+jqJSrl2CebZVsqUx12Eo3c7uZtaTIrD4Xg==",
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "8.0.0",
+          "System.ClientModel": "1.6.0",
+          "System.Memory.Data": "8.0.1"
         }
       },
       "Microsoft.Extensions.Logging": {
