@@ -89,7 +89,9 @@ jobs:
           | ConvertFrom-Json `
           | Where-Object { $_.Name -eq "3.0.0" }
 
-        Write-Output [System.IO.File]::ReadAllText("$HOME/versions.json")
+        $v = [System.IO.File]::ReadAllText("$HOME/versions.json")
+
+        Write-Output v
         Write-Output "versionId=$($version.Id)" >> $GITHUB_OUTPUT
 
     - name: Delete nuget package
