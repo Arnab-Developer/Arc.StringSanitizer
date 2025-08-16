@@ -10,7 +10,7 @@
     <RepositoryUrl>https://github.com/Arnab-Developer/Arc.StringSanitizer</RepositoryUrl>
     <PackageTags>string,sanitize,unsanitize</PackageTags>
     <PackageReleaseNotes>https://github.com/Arnab-Developer/Arc.StringSanitizer/releases</PackageReleaseNotes>
-    <Version>3.0.0</Version>
+    <Version>3.0.1</Version>
     <DocumentationFile>Arc.StringSanitizer.xml</DocumentationFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <IncludeSymbols>true</IncludeSymbols>

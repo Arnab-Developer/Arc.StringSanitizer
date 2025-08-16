@@ -87,7 +87,7 @@ jobs:
           
         $version = [System.IO.File]::ReadAllText("$HOME/versions.json") `
           | ConvertFrom-Json `
-          | Where-Object { $_.name -eq "3.0.0" }
+          | Where-Object { $_.name -eq "3.0.1" }
 
         $versionId = $version -ne $null ? $version.Id : ''
         "version-id=$versionId" >> $env:GITHUB_OUTPUT
@@ -102,7 +102,7 @@ jobs:
 
     - name: Push nuget package
       run: |
-        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
+        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.1.nupkg" \
           --api-key ${{ secrets.GITHUB_TOKEN }} \
           --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
           --skip-duplicate
