@@ -75,13 +75,15 @@ jobs:
     #  with:
     #    dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: Get nuget package
+    - name: Get nuget package version id
+      id: get-nuget-package-version-id
       run: |
-        curl -L \
+        curl https://api.github.com/users/Arnab-Developer/packages/nuget/Arc.StringSanitizer\3.0.0 \
           -H "Accept: application/vnd.github+json" \
           -H "X-GitHub-Api-Version: 2022-11-28" \
-          -H "Authorization: Bearer ${{env.GITHUB_TOKEN}}"
-          https://api.github.com/users/Arnab-Developer/packages/nuget/Arc.StringSanitizer
+          -H "Authorization: Bearer ${{env.GITHUB_TOKEN}}" >> $HOME/versionIds.json
+
+        echo "VERSION_ID=$(jq -r '.[] | select(.name == "3.0.0").id' $HOME/versionIds.json)" >> $GITHUB_OUTPUT
 
     #- name: Delete nuget package
     #  uses: actions/delete-package-versions@v5
