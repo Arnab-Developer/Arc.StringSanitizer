@@ -85,11 +85,12 @@ jobs:
         
         echo "VERSION_ID=$(jq -r '.[] | select(.name == "3.0.0").id' $HOME/versionIds.json)" >> $GITHUB_OUTPUT
 
-    #- name: Delete nuget package
-    #  uses: actions/delete-package-versions@v5
-    #  with:
-    #    package-name: 'Arc.StringSanitizer'
-    #    package-type: 'nuget'
+    - name: Delete nuget package
+      uses: actions/delete-package-versions@v5
+      with:
+        package-name: 'Arc.StringSanitizer'
+        package-type: 'nuget'
+        package-version-ids: '${{ steps.get-nuget-package-version-id.outputs.VERSION_ID }}'
 
     #- name: Push nuget package
     #  run: |
