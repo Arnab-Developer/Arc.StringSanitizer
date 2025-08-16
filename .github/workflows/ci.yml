@@ -60,7 +60,7 @@ jobs:
         uses: actions/dependency-review-action@v4
 
   github-package-push:
-    if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+    #if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
     needs: [create-package, codeql-analysis]
     runs-on: ubuntu-latest
     name: GitHub package push
@@ -75,9 +75,16 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: Push nuget package
-      run: |
-        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
-          --api-key ${{ secrets.GITHUB_TOKEN }} \
-          --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
-          --skip-duplicate
+    - name: Delete old nuget package
+      uses: actions/delete-package-versions@v5
+      with:
+        package-name: Arc.StringSanitizer
+        package-type: nuget
+        package-version-ids: 3.0.0
+
+    #- name: Push new nuget package
+    #  run: |
+    #    dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
+    #      --api-key ${{ secrets.GITHUB_TOKEN }} \
+    #      --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
+    #      --skip-duplicate
