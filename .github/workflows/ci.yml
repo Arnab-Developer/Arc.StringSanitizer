@@ -80,11 +80,10 @@ jobs:
       with:
         package-name: 'Arc.StringSanitizer'
         package-type: 'nuget'
-        #token: ${{ secrets.GITHUB_TOKEN }}
 
-    #- name: Push nuget package
-    #  run: |
-    #    dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
-    #      --api-key ${{ secrets.GITHUB_TOKEN }} \
-    #      --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
-    #      --skip-duplicate
+    - name: Push nuget package
+      run: |
+        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
+          --api-key ${{ secrets.GITHUB_TOKEN }} \
+          --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
+          --skip-duplicate
