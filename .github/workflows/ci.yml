@@ -90,16 +90,15 @@ jobs:
           | Where-Object { $_.name -eq "3.0.0" }
 
         $versionId = $version -ne $null ? $version.Id : ''
-        write-output $versionId
-        #$versionId >> $GITHUB_OUTPUT
+        "version-id=$versionId" >> $env:GITHUB_OUTPUT
 
     - name: Delete nuget package
-      if: ${{ steps.get-nuget-package-version-id.outputs.versionId != '' }}
+      if: ${{ steps.get-nuget-package-version-id.outputs.version-id != '' }}
       uses: actions/delete-package-versions@v5
       with:
         package-name: 'Arc.StringSanitizer'
         package-type: 'nuget'
-        package-version-ids: '${{ steps.get-nuget-package-version-id.outputs.versionId }}'
+        package-version-ids: '${{ steps.get-nuget-package-version-id.outputs.version-id }}'
 
     - name: Push nuget package
       run: |
