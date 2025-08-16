@@ -42,11 +42,11 @@ jobs:
         with:
           languages: csharp
         
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
-        
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+      #- name: Autobuild
+      #  uses: github/codeql-action/autobuild@v3
+      #  
+      #- name: Perform CodeQL Analysis
+      #  uses: github/codeql-action/analyze@v3
 
   dependency-review:
     if: ${{ github.event_name == 'pull_request' }}
@@ -70,20 +70,26 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4 
       
-    - name: Create package
-      uses: ./.github/actions/create-package
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
+    #- name: Create package
+    #  uses: ./.github/actions/create-package
+    #  with:
+    #    dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: Delete old nuget packages
-      uses: actions/delete-package-versions@v5
-      with:
-        package-name: 'Arc.StringSanitizer'
-        package-type: 'nuget'
-
-    - name: Push nuget package
+    - name: Get nuget package
       run: |
-        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
-          --api-key ${{ secrets.GITHUB_TOKEN }} \
-          --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
-          --skip-duplicate
+        curl https://api.github.com/users/Arnab-Developer/packages/nuget/Arc.StringSanitizer \
+          -H "Accept: application/vnd.github+json" \
+          -H "X-GitHub-Api-Version: 2022-11-28"          
+
+    #- name: Delete nuget package
+    #  uses: actions/delete-package-versions@v5
+    #  with:
+    #    package-name: 'Arc.StringSanitizer'
+    #    package-type: 'nuget'
+
+    #- name: Push nuget package
+    #  run: |
+    #    dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
+    #      --api-key ${{ secrets.GITHUB_TOKEN }} \
+    #      --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
+    #      --skip-duplicate
