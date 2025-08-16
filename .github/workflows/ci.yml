@@ -70,10 +70,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4 
       
-    # - name: Create package
-    #   uses: ./.github/actions/create-package
-    #   with:
-    #     dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: Create package
+      uses: ./.github/actions/create-package
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Get nuget package version id
       id: get-nuget-package-version-id
