@@ -87,9 +87,9 @@ jobs:
           
         $version = [System.IO.File]::ReadAllText("$HOME/versions.json") `
           | ConvertFrom-Json `
-          | Where-Object { $_.Name -eq "3.0.0" }
+          | Where-Object { $_.name -eq "3.0.0" }
 
-        $v = [System.IO.File]::ReadAllText("$HOME/versions.json")
+        $v = [System.IO.File]::ReadAllText("$HOME/versions.json") | ConvertFrom-Json
 
         Write-Output $v
         Write-Output "versionId=$($version.Id)" >> $GITHUB_OUTPUT
