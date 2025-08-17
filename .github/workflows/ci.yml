@@ -74,6 +74,7 @@ jobs:
       uses: ./.github/actions/create-package
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
+        package-version: '3.0.1'
 
     - name: Get nuget package version id
       id: get-nuget-package-version-id
