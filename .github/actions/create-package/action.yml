@@ -35,21 +35,30 @@ runs:
     shell: bash
     run: dotnet test -c ${{ inputs.configuration }} --no-build
 
-  - name: Create nuget package with proj version
+  - name: Create nuget package with input version
     shell: bash
-    if: ${{ if (inputs.package-version == null) }}
     run: |
       dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" \
+        if [ ${{ if (inputs.package-version == null) }} ]; then -p:PackageVersion=${{ inputs.package-version }} \ fi
         -c ${{ inputs.configuration }} \
         --no-restore \
         --no-build
 
-  - name: Create nuget package with input version
-    shell: bash
-    if: ${{ if (inputs.package-version != null) }}
-    run: |
-      dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" \
-        -p:PackageVersion=${{ inputs.package-version }} \
-        -c ${{ inputs.configuration }} \
-        --no-restore \
-        --no-build
+  # - if: ${{ if (inputs.package-version == null) }}
+  #   name: Create nuget package with proj version
+  #   shell: bash
+  #   run: |
+  #     dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" \
+  #       -c ${{ inputs.configuration }} \
+  #       --no-restore \
+  #       --no-build
+
+  # - if: ${{ if (inputs.package-version != null) }}
+  #   name: Create nuget package with input version
+  #   shell: bash
+  #   run: |
+  #     dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" \
+  #       -p:PackageVersion=${{ inputs.package-version }} \
+  #       -c ${{ inputs.configuration }} \
+  #       --no-restore \
+  #       --no-build
