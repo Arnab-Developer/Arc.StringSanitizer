@@ -35,14 +35,22 @@ runs:
     shell: bash
     run: dotnet test -c ${{ inputs.configuration }} --no-build
 
-  - name: Create nuget package with input version
-    shell: bash
+  - name: Create nuget package
+    shell: pwsh
     run: |
-      dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" \
-        if [ ${{ inputs.package-version == null }} ]; then -p:PackageVersion=${{ inputs.package-version }} \ fi
-        -c ${{ inputs.configuration }} \
-        --no-restore \
-        --no-build
+      if (${{ inputs.package-version != null }}) {
+        dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" `
+          -p:PackageVersion=${{ inputs.package-version }} `
+          -c ${{ inputs.configuration }} `
+          --no-restore `
+          --no-build
+      }
+      else {
+        dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" `
+          -c ${{ inputs.configuration }} `
+          --no-restore `
+          --no-build
+      }
 
   # - if: ${{ if (inputs.package-version == null) }}
   #   name: Create nuget package with proj version
