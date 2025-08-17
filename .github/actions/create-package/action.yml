@@ -36,10 +36,10 @@ runs:
     run: dotnet test -c ${{ inputs.configuration }} --no-build
 
   - name: Create nuget package
-    shell: pwsh
+    shell: bash
     run: |
-      dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" `
-        -p:PackageVersion=${{ inputs.package-version }} `
-        -c ${{ inputs.configuration }} `
-        --no-restore `
+      dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" \
+        -p:PackageVersion=${{ inputs.package-version }} \
+        -c ${{ inputs.configuration }} \
+        --no-restore \
         --no-build
