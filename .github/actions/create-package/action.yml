@@ -6,6 +6,10 @@ inputs:
     description: .NET version
     required: true
 
+  package-version:
+    description: Package version
+    required: true
+
   configuration:
     description: Build configuration
     required: false
@@ -35,6 +39,7 @@ runs:
     shell: bash
     run: |
       dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" \
+        -p:PackageVersion=${{ inputs.package-version }} \
         -c ${{ inputs.configuration }} \
         --no-restore \
         --no-build
