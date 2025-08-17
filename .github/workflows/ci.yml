@@ -9,6 +9,7 @@ on:
 
 env:
   DOTNET_VERSION: 9.0.x
+  PACKAGE_VERSION: 3.0.${{ github.run_number }}
 
 jobs:
   create-package:    
@@ -22,7 +23,7 @@ jobs:
       uses: ./.github/actions/create-package
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-        package-version: '3.0.${{ github.run_number }}'
+        package-version: ${{ env.PACKAGE_VERSION }}
 
   codeql-analysis:    
     name: CodeQL analysis
@@ -75,7 +76,7 @@ jobs:
       uses: ./.github/actions/create-package
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-        package-version: '3.0.${{ github.run_number }}'
+        package-version: ${{ env.PACKAGE_VERSION }}
 
     - name: Get nuget package version id
       id: get-nuget-package-version-id
@@ -89,7 +90,7 @@ jobs:
           
         $version = [System.IO.File]::ReadAllText("$HOME/versions.json") `
           | ConvertFrom-Json `
-          | Where-Object { $_.name -eq "3.0.${{ github.run_number }}" }
+          | Where-Object { $_.name -eq "${{ env.PACKAGE_VERSION }}" }
 
         $versionId = $version -ne $null ? $version.Id : ''
         "version-id=$versionId" >> $env:GITHUB_OUTPUT
@@ -104,7 +105,7 @@ jobs:
 
     - name: Push nuget package
       run: |
-        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.${{ github.run_number }}.nupkg" \
+        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.${{ env.PACKAGE_VERSION }}.nupkg" \
           --api-key ${{ secrets.GITHUB_TOKEN }} \
           --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
           --skip-duplicate

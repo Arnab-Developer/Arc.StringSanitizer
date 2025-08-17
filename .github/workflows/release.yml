@@ -7,6 +7,7 @@ on:
 
 env:
   DOTNET_VERSION: 9.0.x
+  PACKAGE_VERSION: 3.0.0
 
 jobs:
   nuget-org-push:
@@ -23,11 +24,11 @@ jobs:
       uses: ./.github/actions/create-package
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-        package-version: '3.0.0'
+        package-version: ${{ env.PACKAGE_VERSION }}
 
     - name: Push nuget package
       run: |
-        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.0.nupkg" \
+        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.${{ env.PACKAGE_VERSION }}.nupkg" \
           --api-key ${{ secrets.NUGET_API_KEY }} \
           --source https://api.nuget.org/v3/index.json \
           --skip-duplicate
