@@ -104,7 +104,7 @@ jobs:
 
     - name: Push nuget package
       run: |
-        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.${{ github.run_id }}.nupkg" \
+        dotnet nuget push "src/Arc.StringSanitizer/bin/Release/Arc.StringSanitizer.3.0.${{ github.run_number }}.nupkg" \
           --api-key ${{ secrets.GITHUB_TOKEN }} \
           --source "https://nuget.pkg.github.com/Arnab-Developer/index.json" \
           --skip-duplicate
