@@ -39,7 +39,7 @@ runs:
     shell: bash
     run: |
       dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" \
-        if [ ${{ if (inputs.package-version == null) }} ]; then -p:PackageVersion=${{ inputs.package-version }} \ fi
+        if [ ${{ inputs.package-version == null }} ]; then -p:PackageVersion=${{ inputs.package-version }} \ fi
         -c ${{ inputs.configuration }} \
         --no-restore \
         --no-build
