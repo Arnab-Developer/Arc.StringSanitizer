@@ -23,6 +23,7 @@ jobs:
       uses: ./.github/actions/create-package
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
+        package-version: '3.0.0'
 
     - name: Push nuget package
       run: |

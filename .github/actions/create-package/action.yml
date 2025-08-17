@@ -6,14 +6,14 @@ inputs:
     description: .NET version
     required: true
 
+  package-version:
+    description: Package version
+    required: true
+
   configuration:
     description: Build configuration
     required: false
     default: Release
-
-  package-version:
-    description: Package version
-    required: false
 
 runs:
   using: "composite"
@@ -38,16 +38,8 @@ runs:
   - name: Create nuget package
     shell: pwsh
     run: |
-      if (${{ inputs.package-version != null }}) {
-        dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" `
-          -p:PackageVersion=${{ inputs.package-version }} `
-          -c ${{ inputs.configuration }} `
-          --no-restore `
-          --no-build
-      }
-      else {
-        dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" `
-          -c ${{ inputs.configuration }} `
-          --no-restore `
-          --no-build
-      }
+      dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" `
+        -p:PackageVersion=${{ inputs.package-version }} `
+        -c ${{ inputs.configuration }} `
+        --no-restore `
+        --no-build
