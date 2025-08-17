@@ -11,6 +11,10 @@ inputs:
     required: false
     default: Release
 
+  package-version:
+    description: Package version
+    required: false
+
 runs:
   using: "composite"
   steps:    
@@ -35,6 +39,7 @@ runs:
     shell: bash
     run: |
       dotnet pack "src/Arc.StringSanitizer/Arc.StringSanitizer.csproj" \
+        ${{ if (inputs.package-version != null) }} -p:PackageVersion=${{ inputs.package-version }}
         -c ${{ inputs.configuration }} \
         --no-restore \
         --no-build
